@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace InvoiceManagementSystem.Data.Model
 {
-    public class UnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         private readonly AppDbContext _appDbContext;
         private readonly IServiceProvider _serviceProvider;
