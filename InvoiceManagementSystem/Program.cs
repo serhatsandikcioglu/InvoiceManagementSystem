@@ -4,6 +4,7 @@ using InvoiceManagementSystem.Data.Model;
 using InvoiceManagementSystem.Data;
 using InvoiceManagementSystem.Service;
 using Microsoft.AspNetCore.Identity;
+using AutoMapper;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,10 +21,7 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IApartmentRepository, ApartmentRepository>();
-
-
-
-
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {

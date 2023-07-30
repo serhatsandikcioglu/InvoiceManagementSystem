@@ -1,4 +1,6 @@
-﻿using InvoiceManagementSystem.Data.Model;
+﻿using AutoMapper;
+using InvoiceManagementSystem.Data.Model;
+using InvoiceManagementSystem.Data.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,15 +12,18 @@ namespace InvoiceManagementSystem.Service
     public class UserService : IUserService
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
 
-        public UserService(IUnitOfWork unitOfWork)
+        public UserService(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
 
-        public void Add(User user)
+        public void Add(UserDTO user)
         {
-            _unitOfWork.UserRepository.Add(user);
+           var mappedUser = _mapper.Map<User>(user);
+            _unitOfWork.UserRepository.Add(mappedUser);
             _unitOfWork.Commit();
         }
 
@@ -38,9 +43,10 @@ namespace InvoiceManagementSystem.Service
            return _unitOfWork.UserRepository.GetById(id);
         }
 
-        public void Update(User user)
+        public void Update(UserDTO user)
         {
-            _unitOfWork.UserRepository.Update(user);
+            var mappedUser = _mapper.Map<User>(user);
+            _unitOfWork.UserRepository.Update(mappedUser);
             _unitOfWork.Commit();
         }
     }

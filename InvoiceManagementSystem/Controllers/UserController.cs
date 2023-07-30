@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using InvoiceManagementSystem.Data.Model;
+using InvoiceManagementSystem.Data.DTO;
 namespace InvoiceManagementSystem.API.Controllers
 {
     [Route("api/[controller]/[action]")]
@@ -22,13 +23,13 @@ namespace InvoiceManagementSystem.API.Controllers
             return Ok(users);
         }
         [HttpPost]
-        public IActionResult Create(User user)
+        public IActionResult Create(UserDTO user)
         {
             _userService.Add(user);
             return StatusCode(201,user);
         }
         [HttpPut]
-        public IActionResult Update(User user)
+        public IActionResult Update(UserDTO user)
         {
             _userService.Update(user);
             return Ok(user);
