@@ -13,6 +13,8 @@ namespace InvoiceManagementSystem.Data.Model
         IApartmentRepository ApartmentRepository { get; }
         IBillRepository BillRepository { get; }
         ISubscriptionRepository SubscriptionRepository { get; }
+        ICreditCardRepository CreditCardRepository { get; }
+
 
     }
 }

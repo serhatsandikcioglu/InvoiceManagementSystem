@@ -17,7 +17,6 @@ namespace InvoiceManagementSystem.Data.Model
         public DbSet<Apartment> Apartments { get; set; }
         public DbSet<Bill> Bills { get; set; }
         public DbSet<Subscription> Subscriptions { get; set; }
-
-
+        public DbSet<CreditCard> CreditCards { get; set; }
     }
 }

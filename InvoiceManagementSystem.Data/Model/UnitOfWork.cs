@@ -21,6 +21,8 @@ namespace InvoiceManagementSystem.Data.Model
         private IApartmentRepository _apartmentRepository;
         private IBillRepository _billRepository;
         private ISubscriptionRepository _subscriptionRepository;
+        private ICreditCardRepository _creditCardRepository;
+
 
 
         public IUserRepository UserRepository
@@ -60,6 +62,16 @@ namespace InvoiceManagementSystem.Data.Model
                 if (_subscriptionRepository == default(ISubscriptionRepository))
                     _subscriptionRepository = _serviceProvider.GetRequiredService<ISubscriptionRepository>();
                 return _subscriptionRepository;
+            }
+
+        }
+        public ICreditCardRepository CreditCardRepository
+        {
+            get
+            {
+                if (_creditCardRepository == default(ICreditCardRepository))
+                    _creditCardRepository = _serviceProvider.GetRequiredService<ICreditCardRepository>();
+                return _creditCardRepository;
             }
 
         }
