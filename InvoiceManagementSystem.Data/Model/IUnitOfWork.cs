@@ -11,5 +11,8 @@ namespace InvoiceManagementSystem.Data.Model
         void Commit();
         IUserRepository UserRepository { get; }
         IApartmentRepository ApartmentRepository { get; }
+        IBillRepository BillRepository { get; }
+        ISubscriptionRepository SubscriptionRepository { get; }
+
     }
 }

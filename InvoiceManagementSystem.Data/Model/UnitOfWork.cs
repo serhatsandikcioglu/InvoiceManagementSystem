@@ -19,6 +19,9 @@ namespace InvoiceManagementSystem.Data.Model
         }
         private IUserRepository _userRepository;
         private IApartmentRepository _apartmentRepository;
+        private IBillRepository _billRepository;
+        private ISubscriptionRepository _subscriptionRepository;
+
 
         public IUserRepository UserRepository
         {
@@ -37,6 +40,26 @@ namespace InvoiceManagementSystem.Data.Model
                 if (_apartmentRepository == default(IApartmentRepository))
                     _apartmentRepository = _serviceProvider.GetRequiredService<IApartmentRepository>();
                 return _apartmentRepository;
+            }
+
+        }
+        public IBillRepository BillRepository
+        {
+            get
+            {
+                if (_billRepository == default(IBillRepository))
+                    _billRepository = _serviceProvider.GetRequiredService<IBillRepository>();
+                return _billRepository;
+            }
+
+        }
+        public ISubscriptionRepository SubscriptionRepository
+        {
+            get
+            {
+                if (_subscriptionRepository == default(ISubscriptionRepository))
+                    _subscriptionRepository = _serviceProvider.GetRequiredService<ISubscriptionRepository>();
+                return _subscriptionRepository;
             }
 
         }

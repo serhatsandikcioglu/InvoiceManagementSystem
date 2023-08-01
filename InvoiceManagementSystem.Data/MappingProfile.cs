@@ -15,6 +15,8 @@ namespace InvoiceManagementSystem.Data
         {
             CreateMap<UserDTO, User>();
             CreateMap<ApartmentDTO, Apartment>();
+            CreateMap<BillDTO,Bill>();
+            CreateMap<SubscriptionDTO , Subscription>();
         }
     }
 }
