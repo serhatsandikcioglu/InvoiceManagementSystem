@@ -22,11 +22,6 @@ namespace InvoiceManagementSystem.API.Controllers
             var subscription = _subscriptionService.GetAll();
             return Ok(subscription);
         }
-        [HttpGet]
-        public IActionResult GetBillByApartment(ApartmentDTO apartment)
-        {
-            return Ok(_subscriptionService.GetSubscriptionByAparment(apartment));
-        }
         [HttpPost]
         public IActionResult Create(SubscriptionDTO subscription)
         {

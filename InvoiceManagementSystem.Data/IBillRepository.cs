@@ -9,6 +9,6 @@ namespace InvoiceManagementSystem.Data
 {
     public interface IBillRepository : IGenericRepository<Bill>
     {
-        List<Bill> GetBillByApartment(Apartment apartment);
+        List<Bill> GetAll();
     }
 }

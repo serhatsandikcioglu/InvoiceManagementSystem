@@ -9,5 +9,7 @@ namespace InvoiceManagementSystem.Data
 {
     public interface ICreditCardRepository : IGenericRepository<CreditCard>
     {
+        List<CreditCard> GetAll();
+        public CreditCard GetCard (string cardNo);
     }
 }

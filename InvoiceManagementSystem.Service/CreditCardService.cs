@@ -43,8 +43,13 @@ namespace InvoiceManagementSystem.Service
 
         public void Update(CreditCardDTO creditCard)
         {
-            var mappedCreditCard = _mapper.Map<CreditCard>(creditCard);
-            _unitOfWork.CreditCardRepository.Update(mappedCreditCard);
+            var creditCardFromDatabase = _unitOfWork.CreditCardRepository.GetCard(creditCard.CardNo);
+            creditCardFromDatabase.Year = creditCard.Year;
+            creditCardFromDatabase.Month = creditCard.Month;
+            creditCardFromDatabase.CCV = creditCard.CCV;
+            creditCardFromDatabase.Name = creditCard.Name;
+            creditCardFromDatabase.Surname = creditCard.Surname; // Auto mapper kullandığım zaman ef core iki nesne takip edemiyor buraya bakılacak
+            _unitOfWork.CreditCardRepository.Update(creditCardFromDatabase);
             _unitOfWork.Commit();
         }
     }

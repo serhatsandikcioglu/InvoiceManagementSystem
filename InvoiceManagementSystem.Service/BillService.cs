@@ -36,13 +36,6 @@ namespace InvoiceManagementSystem.Service
         {
             return _unitOfWork.BillRepository.GetAll();
         }
-
-        public List<Bill> GetBillByAparment(ApartmentDTO apartment)
-        {
-            var mappedApartment = _mapper.Map<Apartment>(apartment);
-            return _unitOfWork.BillRepository.GetBillByApartment(mappedApartment);
-        }
-
         public Bill GetById(int id)
         {
             return _unitOfWork.BillRepository.GetById(id);

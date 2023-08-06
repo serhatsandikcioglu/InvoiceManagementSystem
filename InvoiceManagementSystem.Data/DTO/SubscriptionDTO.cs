@@ -11,6 +11,6 @@ namespace InvoiceManagementSystem.Data.DTO
     {
         public int Id { get; set; }
         public int Price { get; set; }
-        public Apartment Apartment { get; set; }
+        public int ApartmentId { get; set; }
     }
 }

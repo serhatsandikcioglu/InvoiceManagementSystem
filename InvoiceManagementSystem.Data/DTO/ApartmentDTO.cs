@@ -15,6 +15,6 @@ namespace InvoiceManagementSystem.Data.DTO
         public string Type { get; set; }
         public int Floor { get; set; }
         public int DepartmentNumber { get; set; }
-        public User User { get; set; }
+        public string OwnerOrTenant { get; set; }
     }
 }

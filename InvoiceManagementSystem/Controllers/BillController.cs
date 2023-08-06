@@ -22,11 +22,6 @@ namespace InvoiceManagementSystem.API.Controllers
             var bill = _billService.GetAll();
             return Ok(bill);
         }
-        [HttpGet]
-        public IActionResult GetBillByApartment(ApartmentDTO apartment)
-        {
-            return Ok(_billService.GetBillByAparment(apartment));
-        }
         [HttpPost]
         public IActionResult Create(BillDTO bill)
         {

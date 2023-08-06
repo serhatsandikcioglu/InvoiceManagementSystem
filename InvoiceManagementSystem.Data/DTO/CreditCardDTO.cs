@@ -10,10 +10,12 @@ namespace InvoiceManagementSystem.Data.DTO
     public class CreditCardDTO
     {
         public int Id { get; set; }
-        public User User { get; set; }
         public string CardNo { get; set; }
-        public DateOnly ExpireDate { get; set; }
-        public char CCV { get; set; }
-        public int Balance { get; set; }
+        public string Year { get; set; }
+        public string Month { get; set; }
+        public string CCV { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
     }
+
 }

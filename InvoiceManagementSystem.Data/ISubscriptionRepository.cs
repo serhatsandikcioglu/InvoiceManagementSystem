@@ -9,6 +9,6 @@ namespace InvoiceManagementSystem.Data
 {
     public interface ISubscriptionRepository : IGenericRepository<Subscription>
     {
-        List<Subscription> GetSubscriptionByApartment(Apartment apartment);
+        
     }
 }

@@ -10,7 +10,8 @@ namespace InvoiceManagementSystem.Data.Model
     {
         public int Id { get; set; }
         public int Price { get; set; }
-        public bool PayInfo { get; set; } = false;
+        public bool IsPaid { get; set; } = false;
+        public int ApartmentId { get; set; }
         public Apartment Apartment { get; set; }
     }
 }

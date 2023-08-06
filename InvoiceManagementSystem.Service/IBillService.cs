@@ -16,6 +16,5 @@ namespace InvoiceManagementSystem.Service
         void Update(BillDTO bill);
         void Add(BillDTO bill);
         Bill GetById(int id);
-        List<Bill> GetBillByAparment(ApartmentDTO apartment);
     }
 }

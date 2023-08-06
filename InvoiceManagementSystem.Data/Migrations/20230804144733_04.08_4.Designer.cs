@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace InvoiceManagementSystem.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230731104353_add-migration 31.07")]
-    partial class addmigration3107
+    [Migration("20230804144733_04.08_4")]
+    partial class _0408_4
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -46,16 +46,15 @@ namespace InvoiceManagementSystem.Data.Migrations
                     b.Property<int>("Floor")
                         .HasColumnType("integer");
 
+                    b.Property<string>("OwnerOrTenant")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("Type")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Apartments");
                 });
@@ -161,7 +160,7 @@ namespace InvoiceManagementSystem.Data.Migrations
                     b.Property<int>("ApartmentId")
                         .HasColumnType("integer");
 
-                    b.Property<bool>("PayInfo")
+                    b.Property<bool>("IsPaid")
                         .HasColumnType("boolean");
 
                     b.Property<int>("Price")
@@ -178,6 +177,46 @@ namespace InvoiceManagementSystem.Data.Migrations
                     b.ToTable("Bills");
                 });
 
+            modelBuilder.Entity("InvoiceManagementSystem.Data.Model.CreditCard", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Balance")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("CCV")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("CardNo")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Month")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Surname")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Year")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CreditCards");
+                });
+
             modelBuilder.Entity("InvoiceManagementSystem.Data.Model.Subscription", b =>
                 {
                     b.Property<int>("Id")
@@ -189,7 +228,7 @@ namespace InvoiceManagementSystem.Data.Migrations
                     b.Property<int>("ApartmentId")
                         .HasColumnType("integer");
 
-                    b.Property<bool>("PayInfo")
+                    b.Property<bool>("IsPaid")
                         .HasColumnType("boolean");
 
                     b.Property<int>("Price")
@@ -343,17 +382,6 @@ namespace InvoiceManagementSystem.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
-                });
-
-            modelBuilder.Entity("InvoiceManagementSystem.Data.Model.Apartment", b =>
-                {
-                    b.HasOne("InvoiceManagementSystem.Data.Model.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("InvoiceManagementSystem.Data.Model.Bill", b =>

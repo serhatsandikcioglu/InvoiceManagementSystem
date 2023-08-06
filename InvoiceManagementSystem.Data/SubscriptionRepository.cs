@@ -15,9 +15,5 @@ namespace InvoiceManagementSystem.Data
         {
             _dbSet = appDbContext.Set<Subscription>();
         }
-        public List<Subscription> GetSubscriptionByApartment(Apartment apartment)
-        {
-            return _dbSet.Where(x => x.Apartment.Id == apartment.Id).Include(x => x.Apartment.User).ToList();
-        }
     }
 }

@@ -15,5 +15,13 @@ namespace InvoiceManagementSystem.Data
         {
             _dbSet = appDbContext.Set<CreditCard>();
         }
+        public List<CreditCard> GetAll()
+        {
+            return _dbSet.ToList();
+        }
+        public CreditCard GetCard(string cardNo)
+        {
+            return _dbSet.FirstOrDefault(x => x.CardNo == cardNo);
+        }
     }
 }

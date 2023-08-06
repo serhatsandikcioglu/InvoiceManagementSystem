@@ -40,13 +40,6 @@ namespace InvoiceManagementSystem.Service
         {
             return _unitOfWork.SubscriptionRepository.GetById(id);
         }
-
-        public List<Subscription> GetSubscriptionByAparment(ApartmentDTO apartment)
-        {
-            var mappedApartment = _mapper.Map<Apartment>(apartment);
-            return _unitOfWork.SubscriptionRepository.GetSubscriptionByApartment(mappedApartment);
-        }
-
         public void Update(SubscriptionDTO subscription)
         {
             var mappedSubscription = _mapper.Map<Subscription>(subscription);

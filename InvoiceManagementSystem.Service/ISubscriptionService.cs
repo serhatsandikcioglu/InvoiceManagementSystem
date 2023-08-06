@@ -15,6 +15,5 @@ namespace InvoiceManagementSystem.Service
         void Update(SubscriptionDTO subscription);
         void Add(SubscriptionDTO subscription);
         Subscription GetById(int id);
-        List<Subscription> GetSubscriptionByAparment(ApartmentDTO apartment);
     }
 }

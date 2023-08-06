@@ -17,7 +17,7 @@ namespace InvoiceManagementSystem.Data
         }
         public List<Apartment> GetAll()
         {
-            return _dbSet.Include(x=>x.User).ToList();
+            return _dbSet.ToList();
         }
     }
 }
