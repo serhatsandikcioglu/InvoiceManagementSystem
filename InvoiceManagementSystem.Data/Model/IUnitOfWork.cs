@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using InvoiceManagementSystem.Data.Interface;
 
 namespace InvoiceManagementSystem.Data.Model
 {
@@ -14,7 +15,7 @@ namespace InvoiceManagementSystem.Data.Model
         IBillRepository BillRepository { get; }
         ISubscriptionRepository SubscriptionRepository { get; }
         ICreditCardRepository CreditCardRepository { get; }
-
+        IResidentRepository ResidentRepository { get; }
 
     }
 }

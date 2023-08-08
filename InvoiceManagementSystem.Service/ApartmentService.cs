@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using InvoiceManagementSystem.Data.DTO;
 using InvoiceManagementSystem.Data.Model;
+using InvoiceManagementSystem.Service.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;

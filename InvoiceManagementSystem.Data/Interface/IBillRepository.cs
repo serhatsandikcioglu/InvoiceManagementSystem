@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InvoiceManagementSystem.Data
+namespace InvoiceManagementSystem.Data.Interface
 {
-    public interface IUserRepository : IGenericRepository<User>
+    public interface IBillRepository : IGenericRepository<Bill>
     {
-
+        List<Bill> GetAll();
     }
 }

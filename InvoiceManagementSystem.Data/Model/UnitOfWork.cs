@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using InvoiceManagementSystem.Data.Interface;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,7 @@ namespace InvoiceManagementSystem.Data.Model
         private IBillRepository _billRepository;
         private ISubscriptionRepository _subscriptionRepository;
         private ICreditCardRepository _creditCardRepository;
-
+        private IResidentRepository _residentRepository;
 
 
         public IUserRepository UserRepository
@@ -72,6 +73,16 @@ namespace InvoiceManagementSystem.Data.Model
                 if (_creditCardRepository == default(ICreditCardRepository))
                     _creditCardRepository = _serviceProvider.GetRequiredService<ICreditCardRepository>();
                 return _creditCardRepository;
+            }
+
+        }
+        public IResidentRepository ResidentRepository
+        {
+            get
+            {
+                if (_residentRepository == default(IResidentRepository))
+                    _residentRepository = _serviceProvider.GetRequiredService<IResidentRepository>();
+                return _residentRepository;
             }
 
         }

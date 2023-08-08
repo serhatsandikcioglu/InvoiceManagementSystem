@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InvoiceManagementSystem.Data
+namespace InvoiceManagementSystem.Data.Interface
 {
     public interface ICreditCardRepository : IGenericRepository<CreditCard>
     {
         List<CreditCard> GetAll();
-        public CreditCard GetCard (string cardNo);
+        public CreditCard GetCard(string cardNo);
     }
 }

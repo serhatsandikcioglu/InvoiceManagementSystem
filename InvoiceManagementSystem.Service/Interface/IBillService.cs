@@ -7,7 +7,7 @@ using InvoiceManagementSystem.Data.DTO;
 using InvoiceManagementSystem.Data.Model;
 
 
-namespace InvoiceManagementSystem.Service
+namespace InvoiceManagementSystem.Service.Interface
 {
     public interface IBillService
     {

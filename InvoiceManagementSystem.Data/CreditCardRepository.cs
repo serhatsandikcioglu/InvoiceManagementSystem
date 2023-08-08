@@ -1,4 +1,5 @@
-﻿using InvoiceManagementSystem.Data.Model;
+﻿using InvoiceManagementSystem.Data.Interface;
+using InvoiceManagementSystem.Data.Model;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,7 @@ namespace InvoiceManagementSystem.Data
         }
         public CreditCard GetCard(string cardNo)
         {
-            return _dbSet.FirstOrDefault(x => x.CardNo == cardNo);
+            return _dbSet.AsNoTracking().FirstOrDefault(x => x.CardNo == cardNo);
         }
     }
 }

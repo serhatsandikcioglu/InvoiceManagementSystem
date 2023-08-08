@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using InvoiceManagementSystem.Data.DTO;
 using InvoiceManagementSystem.Data.Model;
+using InvoiceManagementSystem.Service.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,16 +41,12 @@ namespace InvoiceManagementSystem.Service
         {
             return _unitOfWork.CreditCardRepository.GetById(id);
         }
-
         public void Update(CreditCardDTO creditCard)
         {
-            var creditCardFromDatabase = _unitOfWork.CreditCardRepository.GetCard(creditCard.CardNo);
-            creditCardFromDatabase.Year = creditCard.Year;
-            creditCardFromDatabase.Month = creditCard.Month;
-            creditCardFromDatabase.CCV = creditCard.CCV;
-            creditCardFromDatabase.Name = creditCard.Name;
-            creditCardFromDatabase.Surname = creditCard.Surname; // Auto mapper kullandığım zaman ef core iki nesne takip edemiyor buraya bakılacak
-            _unitOfWork.CreditCardRepository.Update(creditCardFromDatabase);
+            var mappedCreditCard = _mapper.Map<CreditCard>(creditCard);
+            var creditCardBalance = _unitOfWork.CreditCardRepository.GetCard(creditCard.CardNo).Balance;
+            mappedCreditCard.Balance = creditCardBalance;
+            _unitOfWork.CreditCardRepository.Update(mappedCreditCard);
             _unitOfWork.Commit();
         }
     }

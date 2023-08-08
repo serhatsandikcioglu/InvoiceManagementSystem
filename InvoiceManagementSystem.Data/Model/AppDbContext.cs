@@ -18,5 +18,6 @@ namespace InvoiceManagementSystem.Data.Model
         public DbSet<Bill> Bills { get; set; }
         public DbSet<Subscription> Subscriptions { get; set; }
         public DbSet<CreditCard> CreditCards { get; set; }
+        public DbSet<Resident> Residents { get; set; }
     }
 }

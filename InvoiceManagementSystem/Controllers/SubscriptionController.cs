@@ -1,5 +1,5 @@
 ﻿using InvoiceManagementSystem.Data.DTO;
-using InvoiceManagementSystem.Service;
+using InvoiceManagementSystem.Service.Interface;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

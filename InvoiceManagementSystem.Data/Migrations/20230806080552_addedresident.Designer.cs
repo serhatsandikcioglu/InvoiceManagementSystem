@@ -3,6 +3,7 @@ using System;
 using InvoiceManagementSystem.Data.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace InvoiceManagementSystem.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230806080552_addedresident")]
+    partial class addedresident
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -230,10 +233,6 @@ namespace InvoiceManagementSystem.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApartmentId");
-
-                    b.HasIndex("UserId");
-
                     b.ToTable("Residents");
                 });
 
@@ -413,25 +412,6 @@ namespace InvoiceManagementSystem.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Apartment");
-                });
-
-            modelBuilder.Entity("InvoiceManagementSystem.Data.Model.Resident", b =>
-                {
-                    b.HasOne("InvoiceManagementSystem.Data.Model.Apartment", "Apartment")
-                        .WithMany()
-                        .HasForeignKey("ApartmentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("InvoiceManagementSystem.Data.Model.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Apartment");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("InvoiceManagementSystem.Data.Model.Subscription", b =>

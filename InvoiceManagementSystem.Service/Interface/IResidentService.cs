@@ -6,14 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InvoiceManagementSystem.Service
+namespace InvoiceManagementSystem.Service.Interface
 {
-    public interface ICreditCardService
+    public interface IResidentService
     {
-        List<CreditCard> GetAll();
+        List<Resident> GetAll();
         void Delete(int id);
-        void Update(CreditCardDTO creditCard);
-        void Add(CreditCardDTO creditCard);
-        CreditCard GetById(int id);
+        void Update(ResidentDTO resident);
+        void Add(ResidentDTO resident);
+        Resident GetById(int id);
     }
 }

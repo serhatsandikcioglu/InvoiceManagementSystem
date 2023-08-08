@@ -1,4 +1,5 @@
-﻿using InvoiceManagementSystem.Data.Model;
+﻿using InvoiceManagementSystem.Data.Interface;
+using InvoiceManagementSystem.Data.Model;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
