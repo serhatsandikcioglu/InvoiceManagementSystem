@@ -11,6 +11,6 @@ namespace InvoiceManagementSystem.Service.Interface
     public interface IPaymentService
     {
         string PayingBill(CreditCardDTO creditCard, int billId);
-        void PayingSubscription(CreditCardDTO creditCard, SubscriptionDTO subscription);
+        string PayingSubscription(CreditCardDTO creditCard, int subscriptionId);
     }
 }

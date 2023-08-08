@@ -53,9 +53,38 @@ namespace InvoiceManagementSystem.Service
             return "Payment completed.";
         }
 
-        public void PayingSubscription(CreditCardDTO creditCard, SubscriptionDTO subscription)
+        public string PayingSubscription(CreditCardDTO creditCard, int subscriptionId)
         {
-            throw new NotImplementedException();
+            var creditCardFromDatabase = _unitOfWork.CreditCardRepository.GetCard(creditCard.CardNo);
+            var subscriptionFromDatabase = _unitOfWork.BillRepository.GetById(subscriptionId);
+            if (creditCardFromDatabase == null)
+            {
+                return "The card could not be verified";
+            }
+            if (subscriptionFromDatabase == null)
+            {
+                return "The subscription could not be found";
+            }
+            if (subscriptionFromDatabase.IsPaid == true)
+            {
+                return "The subscription has been paid.";
+            }
+            if (!(creditCard.Year == creditCardFromDatabase.Year && creditCard.Month == creditCardFromDatabase.Month
+                && creditCard.CCV == creditCardFromDatabase.CCV && creditCard.Name == creditCardFromDatabase.Name
+                && creditCard.Surname == creditCardFromDatabase.Surname))
+            {
+                return "The card could not be verified";
+            }
+            if (creditCardFromDatabase.Balance < subscriptionFromDatabase.Price)
+            {
+                return "Insufficient balance.";
+            }
+            creditCardFromDatabase.Balance = creditCardFromDatabase.Balance - subscriptionFromDatabase.Price;
+            subscriptionFromDatabase.IsPaid = true;
+            _unitOfWork.CreditCardRepository.Update(creditCardFromDatabase);
+            _unitOfWork.BillRepository.Update(subscriptionFromDatabase);
+            _unitOfWork.Commit();
+            return "Payment completed.";
         }
     }
 }

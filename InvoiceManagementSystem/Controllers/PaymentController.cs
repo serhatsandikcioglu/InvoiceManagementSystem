@@ -21,5 +21,10 @@ namespace InvoiceManagementSystem.API.Controllers
         {
            return  Ok(_paymentService.PayingBill(creditCard , billId));
         }
+        [HttpPut]
+        public IActionResult PaySubscription(CreditCardDTO creditCard, int subscriptionId)
+        {
+            return Ok(_paymentService.PayingSubscription(creditCard, subscriptionId));
+        }
     }
 }
