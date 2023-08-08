@@ -11,10 +11,14 @@ namespace InvoiceManagementSystem.Data
 {
     public class ResidentRepository : GenericRepository<Resident> , IResidentRepository
     {
-        private readonly DbSet<Apartment> _dbSet;
+        private readonly DbSet<Resident> _dbSet;
         public ResidentRepository(AppDbContext appDbContext) : base(appDbContext)
         {
-            _dbSet = appDbContext.Set<Apartment>();
+            _dbSet = appDbContext.Set<Resident>();
+        }
+        public List<Resident> GetAll()
+        {
+            return _dbSet.Include(x=>x.User).Include(x=>x.Apartment).ToList();
         }
     }
 }

@@ -28,22 +28,25 @@ namespace InvoiceManagementSystem.Service
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            _unitOfWork.ResidentRepository.Delete(id);
+            _unitOfWork.Commit();
         }
 
         public List<Resident> GetAll()
         {
-            throw new NotImplementedException();
+            return _unitOfWork.ResidentRepository.GetAll();
         }
 
         public Resident GetById(int id)
         {
-            throw new NotImplementedException();
+            return _unitOfWork.ResidentRepository.GetById(id);
         }
 
         public void Update(ResidentDTO resident)
         {
-            throw new NotImplementedException();
+            var mappedResident = _mapper.Map<Resident>(resident);
+            _unitOfWork.ResidentRepository.Update(mappedResident);
+            _unitOfWork.Commit();
         }
     }
 }

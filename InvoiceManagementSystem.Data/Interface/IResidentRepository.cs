@@ -9,6 +9,6 @@ namespace InvoiceManagementSystem.Data.Interface
 {
     public interface IResidentRepository : IGenericRepository<Resident>
     {
-
+        public List<Resident> GetAll();
     }
 }
