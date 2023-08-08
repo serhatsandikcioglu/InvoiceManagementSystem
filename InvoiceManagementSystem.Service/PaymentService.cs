@@ -56,7 +56,7 @@ namespace InvoiceManagementSystem.Service
         public string PayingSubscription(CreditCardDTO creditCard, int subscriptionId)
         {
             var creditCardFromDatabase = _unitOfWork.CreditCardRepository.GetCard(creditCard.CardNo);
-            var subscriptionFromDatabase = _unitOfWork.BillRepository.GetById(subscriptionId);
+            var subscriptionFromDatabase = _unitOfWork.SubscriptionRepository.GetById(subscriptionId);
             if (creditCardFromDatabase == null)
             {
                 return "The card could not be verified";
@@ -82,7 +82,7 @@ namespace InvoiceManagementSystem.Service
             creditCardFromDatabase.Balance = creditCardFromDatabase.Balance - subscriptionFromDatabase.Price;
             subscriptionFromDatabase.IsPaid = true;
             _unitOfWork.CreditCardRepository.Update(creditCardFromDatabase);
-            _unitOfWork.BillRepository.Update(subscriptionFromDatabase);
+            _unitOfWork.SubscriptionRepository.Update(subscriptionFromDatabase);
             _unitOfWork.Commit();
             return "Payment completed.";
         }
