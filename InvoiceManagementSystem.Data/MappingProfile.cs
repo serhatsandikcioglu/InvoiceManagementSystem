@@ -13,6 +13,7 @@ namespace InvoiceManagementSystem.Data
     {
         public MappingProfile() 
         {
+            CreateMap<UserDTO, AppUser>();
             CreateMap<UserDTO, User>();
             CreateMap<ApartmentDTO, Apartment>();
             CreateMap<BillDTO,Bill>();

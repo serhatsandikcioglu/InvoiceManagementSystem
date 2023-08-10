@@ -7,24 +7,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using InvoiceManagementSystem.Service.Interface;
+using Microsoft.AspNetCore.Identity;
 
 namespace InvoiceManagementSystem.Service
 {
     public class UserService : IUserService
     {
+        private readonly UserManager<AppUser> _userManager;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
-        public UserService(IUnitOfWork unitOfWork, IMapper mapper)
+        public UserService(IUnitOfWork unitOfWork, IMapper mapper, UserManager<AppUser> userManager)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _userManager = userManager;
         }
 
         public void Add(UserDTO user)
         {
-           var mappedUser = _mapper.Map<User>(user);
-            _unitOfWork.UserRepository.Add(mappedUser);
+            var mappedUser = _mapper.Map<User>(user);
+            var appUser = _mapper.Map<AppUser>(user);
+            appUser.UserName = user.Email;
+            _userManager.CreateAsync(appUser, "Password123*");
+            _userManager.AddToRoleAsync(appUser, "user");
+            _unitOfWork.UserRepository.Add(mappedUser); // bu satırı kaldırdığımda metot çalışmıyor bakılacak.
             _unitOfWork.Commit();
         }
 

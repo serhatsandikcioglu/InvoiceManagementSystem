@@ -1,7 +1,9 @@
 ﻿using InvoiceManagementSystem.Data.DTO;
 using InvoiceManagementSystem.Service.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace InvoiceManagementSystem.API.Controllers
 {
@@ -17,11 +19,15 @@ namespace InvoiceManagementSystem.API.Controllers
         }
 
         [HttpPut]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        [Authorize(Roles = "user")]
         public IActionResult PayBill(CreditCardDTO creditCard,int billId)
         {
            return  Ok(_paymentService.PayingBill(creditCard , billId));
         }
         [HttpPut]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        [Authorize(Roles = "user")]
         public IActionResult PaySubscription(CreditCardDTO creditCard, int subscriptionId)
         {
             return Ok(_paymentService.PayingSubscription(creditCard, subscriptionId));
