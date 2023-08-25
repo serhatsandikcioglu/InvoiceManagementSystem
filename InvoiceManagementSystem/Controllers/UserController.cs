@@ -27,10 +27,17 @@ namespace InvoiceManagementSystem.API.Controllers
             return Ok(users);
         }
         [HttpPost]
-        public IActionResult Create(UserDTO user)
+        public async Task<IActionResult> Create(UserDTO user)
         {
-            _userService.Add(user);
-            return StatusCode(201,user);
+            var result = await _userService.Add(user);
+            if (result.Success)
+            {
+                return Ok(result.Data);
+            }
+            else
+            {
+                return BadRequest(result.Message);
+            }
         }
         [HttpPut]
         public IActionResult Update(UserDTO user)

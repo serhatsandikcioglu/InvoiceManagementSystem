@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using InvoiceManagementSystem.Service.CustomResponse;
 
 namespace InvoiceManagementSystem.Service.Interface
 {
@@ -13,7 +15,7 @@ namespace InvoiceManagementSystem.Service.Interface
         List<User> GetAll();
         void Delete(int id);
         void Update(UserDTO user);
-        void Add(UserDTO user);
+        Task<CustomResponse<AppUser>> Add(UserDTO user);
         User GetById(int id);
     }
 }
