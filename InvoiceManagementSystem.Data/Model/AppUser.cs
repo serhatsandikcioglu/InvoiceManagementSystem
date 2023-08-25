@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace InvoiceManagementSystem.Data.Model
 {
-    public class AppUser : IdentityUser
+    public class AppUser : IdentityUser<Guid>
     {
         public string Name { get; set; }
         public string Surname { get; set; }

@@ -10,6 +10,10 @@ using InvoiceManagementSystem.Service.Interface;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using InvoiceManagementSystem.Data.DTO;
+using FluentValidation;
+using InvoiceManagementSystem.Service.Validation;
+using InvoiceManagementSystem.Service.CustomResponse;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,6 +44,8 @@ builder.Services.AddAutoMapper(typeof(MappingProfile));
 builder.Services.Configure<TokenOptionsModel>(builder.Configuration.GetSection("TokenOptions"));
 builder.Services.AddScoped<GetTokenService>();
 builder.Services.AddScoped<TokenOptionsModel>();
+builder.Services.AddScoped<IValidator<UserDTO>, UserValidator>();
+builder.Services.AddScoped<CustomResponse<AppUser>>();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
@@ -82,7 +88,7 @@ using (var scope = app.Services.CreateScope())
     if (!dbContext.Users.Any())
     {
         var userManager = scope.ServiceProvider.GetRequiredService<UserManager<AppUser>>();
-        var user = new AppUser() { UserName = "admin1" };
+        var user = new AppUser() { UserName = "admin1" , Name= "admin", Surname = "admin" , TcNo = "123123" , VehicleInfo = "adminvechile" };
         await userManager.CreateAsync(user, "Asd123*");
         await userManager.AddToRoleAsync(user, "admin");
 

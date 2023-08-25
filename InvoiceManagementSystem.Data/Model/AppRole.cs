@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace InvoiceManagementSystem.Data.Model
 {
-    public class AppRole : IdentityRole
+    public class AppRole : IdentityRole<Guid>
     {
     }
 }

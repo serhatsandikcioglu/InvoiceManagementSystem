@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace InvoiceManagementSystem.Data.Model
 {
-    public class AppDbContext : IdentityDbContext<AppUser, AppRole, string>
+    public class AppDbContext : IdentityDbContext<AppUser, AppRole, Guid>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {

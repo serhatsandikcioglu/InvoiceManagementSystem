@@ -42,7 +42,7 @@ namespace InvoiceManagementSystem.Service
             SigningCredentials signingCredentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256Signature);
             var claims = new List<Claim>();
 
-            claims.Add(new Claim(ClaimTypes.NameIdentifier, user.Id));
+            claims.Add(new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()));
             claims.Add(new Claim(JwtRegisteredClaimNames.Aud, _tokenOptions.Audience[0]));
 
             userRoles.ToList().ForEach(x =>
